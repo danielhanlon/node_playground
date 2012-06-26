@@ -13,6 +13,8 @@ fs.stat(file_path, function(err,stat){
 	    'Content-Length': stat.size
 	});
 
+
+	//Pump pattern
 	var rs = fs.createReadStream(file_path);
 	rs.on('data', function(file_content){
 	    var flushed = response.write(file_content);	    
