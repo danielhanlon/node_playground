@@ -3,8 +3,8 @@ var http=require('http');
 var spawn = require('child_process').spawn;
 
 http.createServer(function(request, response){
-    response.write(200,{
-        'Content-Type' : 'text/plain'
+    response.write(200, {
+        'Content-Type': 'text/plain'
     });
     
     //For each new request spawn a new child process
