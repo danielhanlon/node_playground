@@ -1,5 +1,6 @@
 var http = require('http');
 var fs   = require('fs');
+var sys  = require('sys');
 
 var file_path = __dirname+'/Venice.jpg';
 fs.stat(file_path, function(err,stat){
@@ -14,23 +15,7 @@ fs.stat(file_path, function(err,stat){
 	});
 
 	//Pump pattern - see sys.pump(readbleStream, writeableStream, callback)
-	var rs = fs.createReadStream(file_path);
-	rs.on('data', function(file_content){
-	    var flushed = response.write(file_content);
-	    //If there's still data to be read then pause for now
-	    if (!flushed){
-		rs.pause();
-	    }
-	});
-	
-	//When the reponse stream has been emptied, resume
-	response.on('drain', function(){
-	    rs.resume();
-	});
-	
-	rs.on('end', function(){
-	    response.end();
-	});
+	sys.pump(fs.createReadStream(file_path), response);
 
     }).listen(4000);
 });
