@@ -14,7 +14,7 @@ fs.stat(file_path, function(err,stat){
 	});
 
 	var rs = fs.createReadStream(file_path);
-	rs.on('data', function(){
+	rs.on('data', function(file_content){
 	    response.write(file_content);	    
 	});
 	rs.on('end', function(){
