@@ -1,6 +1,6 @@
 var http=require('http');
 
-var spawn = require('spawn').spawn;
+var spawn = require('child_process').spawn;
 
 http.createServer(function(request, response){
     response.write(200,{
