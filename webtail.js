@@ -12,14 +12,14 @@ http.createServer(function(request, response){
     
     //Kill this child process at the end of this connection
     request.connection.on('end', function(){
-       tail_child.kill();
+	tail_child.kill();
     });
-
+    
     //Bind to the stdout
     tail_child.stdout.on('data', function(data){
-       //Called every time there is data on standard out
-       //Data is already buffered by Node.js
-       console.log(data.toString());
-       response.write(data);
+	//Called every time there is data on standard out
+	//Data is already buffered by Node.js
+	console.log(data.toString());
+	response.write(data);
     });
 }).listen(4000, '127.0.0.1');
