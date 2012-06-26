@@ -3,7 +3,7 @@ var http=require('http');
 var spawn = require('child_process').spawn;
 
 http.createServer(function(request, response){
-    response.write(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, {'Content-Type': 'text/plain'});
     
     //For each new request spawn a new child process
     var tail_child = spawn('tail', ['-f', '/var/log/system.log']);
