@@ -13,7 +13,7 @@ fs.stat(file_path, function(err,stat){
 	    'Content-Length': stat.size
 	});
 
-	fs.readFile(file_path, funciton(err, file_content){
+	fs.readFile(file_path, function(err, file_content){
 	    response.write(file_content);
 	    response.end();
 	});
