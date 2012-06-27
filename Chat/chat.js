@@ -1,5 +1,5 @@
 var http    =   require('http'),
-    sys     =   require('sys'),
+    sys     =   require('util'),
     fs      =   require('fs'),
     io      =   require('socket.io');
     
