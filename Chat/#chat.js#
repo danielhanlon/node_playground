@@ -1,8 +1,8 @@
-var http    =   require('http').createServer(handler),
-    sys     =   require('util'),
-    fs      =   require('fs'),
-    io      =   require('socket.io').listen(app);
-    
+var app     =   require('http').createServer(handler);
+var sys     =   require('util');
+var fs      =   require('fs');
+var io      =   require('socket.io').listen(app);
+
 var server = http.createServer(function(request,response){
     response.writeHead(200,{
         'Content-Type': 'text/html'
