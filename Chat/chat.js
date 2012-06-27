@@ -3,7 +3,7 @@ var sys     =   require('util');
 var fs      =   require('fs');
 var io      =   require('socket.io').listen(app);
 
-handler = function(request,response){
+function handler(request,response){
     response.writeHead(200,{
         'Content-Type': 'text/html'
     });
