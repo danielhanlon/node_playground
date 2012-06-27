@@ -6,8 +6,7 @@
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-    //ws=new WebSocket("ws://localhost:8080");
-    socket=new io.Socket('localhost',{port:8080});
+    socket=io.connect('localhost',{port:8080});
     socket.on('message',function(message){
         var data=message.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
         $('#log ul').append('<li>'+data+'</li>');
