@@ -1,20 +1,18 @@
-var http    =   require('http'),
-    sys     =   require('util'),
-    fs      =   require('fs'),
-    io      =   require('socket.io');
-    
-var server = http.createServer(function(request,response){
+var app     =   require('http').createServer(handler);
+var sys     =   require('util');
+var fs      =   require('fs');
+var io      =   require('socket.io').listen(app);
+
+handler = function(request,response){
     response.writeHead(200,{
         'Content-Type': 'text/html'
     });
     
     var rs = fs.createReadStream(__dirname + '/template.html');
     sys.pump(rs,response);
-});
+}
 
-var socket = io.listen(server);
-socket.on('connection', function(client){
-    
+io.sockets.on('connection', function(client){
     var username;
     
     client.send('Welcome to this socket.io chat server!');
@@ -31,4 +29,4 @@ socket.on('connection', function(client){
     
 });
 
-server.listen(4000);
+app.listen(4000);
