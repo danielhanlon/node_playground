@@ -8,7 +8,7 @@
 $(document).ready(function(){
     var socket=io.connect('localhost',{port:8080});
     socket.on('message',function(message){
-        //var data=message.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+        var data=message.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
         $('#log ul').append('<li>'+data+'</li>');
         window.scrollBy(0,10000000000000);
         entry_el.focus();
