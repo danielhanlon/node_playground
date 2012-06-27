@@ -16,9 +16,7 @@ fs.stat(file_path, function(err,stat){
 
 	//Pump pattern - see sys.pump(readbleStream, writeableStream, callback)
 	sys.pump(fs.createReadStream(file_path), response, function(err){
-	    if (err){
-		throw err;
-	    }
+	    if (err) throw err;
 	});
 
     }).listen(4000);
